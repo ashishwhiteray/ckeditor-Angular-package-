@@ -1,0 +1,96 @@
+Step 1____  
+-----------------------Install------------------------
+npm i @kolkov/angular-editor
+
+
+Versions------
+1.0.0 and above - for Angular v8.x.x and above
+
+0.18.4 and above - for Angular v7.x.x
+
+0.15.x - for Angular v6.x.x
+
+
+  
+  
+  Step 2____  
+-----------------------Import in AppModule.ts------------------------
+import { AngularEditorModule } from '@kolkov/angular-editor';
+
+
+
+Step 3____  
+-----------------------Place in html in component.html------------------------
+<angular-editor [placeholder]="'Enter text here...'" [(ngModel)]="htmlContent"></angular-editor>            //---------If using ngModel---------------
+
+
+or
+
+
+
+<angular-editor id="editor1" formControlName="htmlContent1" [config]="editorConfig"></angular-editor>        //---------If using formControlName---------------
+<angular-editor id="editor2" formControlName="htmlContent2" [config]="editorConfig"></angular-editor>
+
+
+
+------------------------------------------------------------That's  it................................................
+
+But if you want to customize thia editor then do these thing ----------------
+
+
+
+Step 4____  This is an Optional step
+  
+-----------------------Import in component.ts------------------------
+
+
+import { AngularEditorConfig } from '@kolkov/angular-editor';
+ 
+ 
+editorConfig: AngularEditorConfig = {
+    editable: true,
+      spellcheck: true,
+      height: 'auto',
+      minHeight: '0',
+      maxHeight: 'auto',
+      width: 'auto',
+      minWidth: '0',
+      translate: 'yes',
+      enableToolbar: true,
+      showToolbar: true,
+      placeholder: 'Enter text here...',
+      defaultParagraphSeparator: '',
+      defaultFontName: '',
+      defaultFontSize: '',
+      fonts: [
+        {class: 'arial', name: 'Arial'},
+        {class: 'times-new-roman', name: 'Times New Roman'},
+        {class: 'calibri', name: 'Calibri'},
+        {class: 'comic-sans-ms', name: 'Comic Sans MS'}
+      ],
+      customClasses: [
+      {
+        name: 'quote',
+        class: 'quote',
+      },
+      {
+        name: 'redText',
+        class: 'redText'
+      },
+      {
+        name: 'titleText',
+        class: 'titleText',
+        tag: 'h1',
+      },
+    ],
+    uploadUrl: 'v1/image',
+    uploadWithCredentials: false,
+    sanitize: true,
+    toolbarPosition: 'top',
+    toolbarHiddenButtons: [
+      ['bold', 'italic'],
+      ['fontSize']
+    ]
+};
+
+
